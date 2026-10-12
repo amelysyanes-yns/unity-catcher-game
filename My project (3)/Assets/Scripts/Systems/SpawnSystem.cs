@@ -12,6 +12,10 @@ public class SpawnSystem : MonoBehaviour
     [SerializeField] private float spawnY = 6f;
 
     private float timer;
+    private void OnEnable()  => GameEvents.OnGameOver += StopSpawning;
+    private void OnDisable() => GameEvents.OnGameOver -= StopSpawning;
+
+    private void StopSpawning() => enabled = false;
 
     private void Update()
     {
